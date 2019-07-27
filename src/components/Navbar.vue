@@ -51,15 +51,19 @@
                     src="https://media.mmo-champion.com/images/news/2018/february/WoWIcon22.jpg"
                     alt="alt"
                 />
-                <v-icon>mdi-chevron-down</v-icon>
             </v-avatar>
+            <MenuDropdown></MenuDropdown>
         </v-toolbar>
     </nav>
 </template>
 
 <script>
+import MenuDropdown from '@/components/MenuDropdown';
 export default {
     name: 'Navbar',
+    components: {
+        MenuDropdown
+    },
     data: function() {
         return {
             drawer: false,
