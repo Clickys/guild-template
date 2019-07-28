@@ -70,6 +70,11 @@ export default {
             item: 1,
             items: [
                 { text: 'Home', icon: 'mdi-home', src: '#/' },
+                {
+                    text: 'Members',
+                    icon: 'mdi-account-multiple-outline',
+                    src: '#/members'
+                },
                 { text: 'Calendar', icon: 'mdi-calendar', src: '#/calendar' }
             ]
         };
