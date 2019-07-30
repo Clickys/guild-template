@@ -1,58 +1,57 @@
 <template>
     <v-container fluid fill-height class="grey" darken-4 grid-list-md>
         <v-layout wrap>
-            <v-flex xs-6>
-                <v-chip pill>
+            <v-flex>
+                <v-chip pill class="mb-1">
                     <v-avatar left class="red white--text">
                         RL
                     </v-avatar>
                     Raid Leader
                 </v-chip>
-                <v-chip pill class="ml-5">
+                <v-chip pill class="mb-1">
                     <v-avatar left class="red white--text">
                         GM
                     </v-avatar>
                     Guild Master
                 </v-chip>
-                <v-chip pill class="ml-5">
+                <v-chip pill class="mb-1">
                     <v-avatar left class="red white--text">
                         CL
                     </v-avatar>
                     Class Leader
                 </v-chip>
-                <v-chip pill class="ml-5">
+                <v-chip pill class="">
                     <v-avatar left class="red white--text">
                         O
                     </v-avatar>
                     Officer
                 </v-chip>
                 <br />
-                <v-chip pill class="mt-5">
+                <v-chip pill class="mt-2">
                     <v-avatar left class="red white--text">
                         C
                     </v-avatar>
                     Casual
                 </v-chip>
-                <v-chip pill class="mt-5 ml-5">
+                <v-chip pill class="mt-2">
                     <v-avatar left class="red white--text">
                         BL
                     </v-avatar>
                     Bank Leader
                 </v-chip>
-                <v-chip pill class="mt-5 ml-5">
+                <v-chip pill class="mt-2">
                     <v-avatar left class="red white--text">
                         RDR
                     </v-avatar>
                     Raid Data Record
                 </v-chip>
-                <v-chip pill class="mt-5 ml-5">
+                <v-chip pill class="mt-2    ">
                     <v-avatar left class="red white--text">
                         MT
                     </v-avatar>
                     Main Tank
                 </v-chip>
-                <br />
-                <v-chip pill class="mt-5">
+                <v-chip pill class="mt-2">
                     <v-avatar left class="red white--text">
                         RO
                     </v-avatar>
