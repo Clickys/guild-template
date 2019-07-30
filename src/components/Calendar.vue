@@ -6,8 +6,8 @@
                     <v-calendar
                         color="red"
                         darken-2
-                        now="2019-07-27"
-                        value="2019-07-29"
+                        now=""
+                        value=""
                         dark
                         event-color="red"
                         :events="events"

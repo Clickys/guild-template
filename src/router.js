@@ -10,6 +10,19 @@ export default new Router({
         {
             path: '/',
             name: 'home',
+            meta: {
+                title: 'Home Page - Beenerds Guild',
+                metaTags: [
+                    {
+                        name: 'description',
+                        content: 'Beenerds official guild website'
+                    },
+                    {
+                        property: 'og:description',
+                        content: 'Beenerds official guild website'
+                    }
+                ]
+            },
             component: Home
         },
         {

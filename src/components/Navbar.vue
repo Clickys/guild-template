@@ -40,9 +40,6 @@
                 <span class="font-weight-bold">Guild</span></v-toolbar-title
             >
             <v-spacer></v-spacer>
-            <v-btn href="#/calendar" class="mr-2" fab x-small dark darken-4>
-                <v-icon class="white--text">mdi-calendar</v-icon>
-            </v-btn>
             <v-btn fab x-small dark class="mr-5" darken-4 to="/">
                 <v-icon class="white--text">mdi-home</v-icon>
             </v-btn>
