@@ -1,8 +1,8 @@
 <template>
     <v-container fill-height fluid>
-        <v-layout>
-            <v-flex>
-                <v-sheet height="100%">
+        <v-layout align-content-center>
+            <v-flex xs12 md12>
+                <v-sheet height="80%">
                     <v-calendar
                         color="red"
                         darken-2
@@ -25,6 +25,12 @@ export default {
                 name: 'Raid',
                 start: '2019-07-29',
                 end: '2019-07-29'
+            },
+            {
+                name: 'Meeting @ 20:00',
+                start: '2019-08-02',
+                end: '2019-08-02',
+                color: 'green'
             }
         ]
     })

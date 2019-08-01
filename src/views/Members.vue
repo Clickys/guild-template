@@ -1,7 +1,7 @@
 <template>
-    <v-container fluid fill-height class="grey" darken-4 grid-list-md>
+    <v-container fluid fill-height class="grey" darken-4>
         <v-layout wrap>
-            <v-flex>
+            <v-flex xs12 md6>
                 <v-chip pill class="mb-1">
                     <v-avatar left class="red white--text">
                         RL
@@ -51,17 +51,22 @@
                     </v-avatar>
                     Main Tank
                 </v-chip>
+                <br />
                 <v-chip pill class="mt-2">
                     <v-avatar left class="red white--text">
                         RO
                     </v-avatar>
                     Raid Organizer
                 </v-chip>
+                <v-chip pill class="mt-2">
+                    <v-avatar left class="red white--text">
+                        CR
+                    </v-avatar>
+                    Cheerleader
+                </v-chip>
                 <br />
             </v-flex>
-        </v-layout>
-        <v-layout row wrap>
-            <v-flex>
+            <v-flex xs12 md6>
                 <v-simple-table dark>
                     <thead>
                         <tr>
@@ -150,6 +155,20 @@ export default {
         return {
             membersDatabase: [
                 {
+                    nickname: 'Nicholas Evangelides',
+                    class: 'Rogue',
+                    guildRoles: ['GM', 'RL', 'CL'],
+                    raidRole: 'Dps',
+                    classAvatar: classAvatars.rogue
+                },
+                {
+                    nickname: 'Clickys',
+                    class: 'Druid',
+                    guildRoles: ['CR'],
+                    raidRole: 'Resto',
+                    classAvatar: classAvatars.druid
+                },
+                {
                     nickname: 'Pampos Charalampous',
                     class: 'Warrior',
                     guildRoles: ['RL', 'CL', 'O'],
@@ -194,7 +213,7 @@ export default {
                 {
                     nickname: 'Harrys Nikolaidis',
                     class: 'Warrior',
-                    guildRoles: ['RDR', 'O'],
+                    guildRoles: [],
                     raidRole: 'Dps',
                     classAvatar: classAvatars.warrior
                 },
@@ -317,13 +336,7 @@ export default {
                     raidRole: 'Shadow',
                     classAvatar: classAvatars.priest
                 },
-                {
-                    nickname: 'Clickys',
-                    class: 'Druid',
-                    guildRoles: [],
-                    raidRole: 'Resto',
-                    classAvatar: classAvatars.druid
-                },
+
                 {
                     nickname: 'Loukas Elia',
                     class: 'Druid',
@@ -362,7 +375,7 @@ export default {
                 {
                     nickname: 'Nikolas Nikolaides',
                     class: 'Mage',
-                    guildRoles: [],
+                    guildRoles: ['RDR', 'O'],
                     raidRole: 'Dps',
                     classAvatar: classAvatars.mage
                 },
@@ -398,13 +411,6 @@ export default {
                     nickname: 'Sotos Takis',
                     class: 'Rogue',
                     guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.rogue
-                },
-                {
-                    nickname: 'Nicholas Evangelides',
-                    class: 'Rogue',
-                    guildRoles: ['GM', 'RL', 'CL'],
                     raidRole: 'Dps',
                     classAvatar: classAvatars.rogue
                 },
