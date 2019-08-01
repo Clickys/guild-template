@@ -46,7 +46,7 @@
                     </v-card-title>
 
                     <v-card-text class="headline font-weight-bold">
-                        "First Guild Meeting at 09/01/2019 meet at gm place"
+                        "First Guild Meeting at 08/01/2019 meet at gm place"
                     </v-card-text>
 
                     <v-card-actions>
