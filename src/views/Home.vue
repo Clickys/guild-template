@@ -1,6 +1,13 @@
 <template>
-    <v-container fluid fill-height class="grey" darken-4>
-        <v-layout row wrap align-content-start>
+    <v-container
+        fluid
+        fill-height
+        align-content-space-between
+        justify-space-around
+        class="grey"
+        darken-4
+    >
+        <v-layout row wrap align-content-space-around>
             <v-flex xs12 md4 align-self-start>
                 <v-card color="red ml-3" dark max-width="400">
                     <v-card-title>
@@ -37,7 +44,7 @@
                 </v-card>
             </v-flex>
             <v-flex xs12 md4>
-                <v-card color="primary" dark max-width="400">
+                <v-card color="primary ml-3" dark max-width="400">
                     <v-card-title>
                         <v-icon large left>
                             mdi-message-alert-outline
