@@ -66,22 +66,22 @@
                 </v-chip>
                 <br />
             </v-flex>
-            <v-flex xs12 md6>
+            <v-flex xs12 md8>
                 <v-simple-table dark>
                     <thead>
                         <tr>
-                            <th class="text-left">Nickname</th>
-                            <th class="text-left">Class</th>
-                            <th class="text-left">Raid Role</th>
-                            <th class="text-left">Guild Role</th>
-                            <th class="text-left"></th>
-                            <th class="text-left">
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Fullname</th>
+                            <th class="text-center">Nickname</th>
+                            <th class="text-center">Battletag</th>
+                            <th class="text-center">Class</th>
+                            <th class="text-center">Role</th>
+                            <th class="text-center">Rank</th>
+                            <th class="text-center"></th>
+                            <th class="text-center">
                                 <v-menu offset-y>
                                     <template v-slot:activator="{ on }">
-                                        Filter
-                                        <v-icon v-on="on" small
-                                            >mdi-chevron-down</v-icon
-                                        >
+                                        <v-icon v-on="on">mdi-chevron-down</v-icon>
                                     </template>
                                     <v-list dark>
                                         <v-list-item
@@ -105,8 +105,12 @@
                         <tr
                             v-for="(member, index) in filteredMembers"
                             :key="member.nickname + index"
+                            class="text-center"
                         >
+                            <td>{{ member.id }}</td>
+                            <td>{{ member.fullname }}</td>
                             <td>{{ member.nickname }}</td>
+                            <td>{{ member.battletag }}</td>
                             <td>
                                 {{ member.class }}
                             </td>
@@ -115,7 +119,7 @@
                                 <template v-if="member.guildRoles.length">
                                     <v-chip
                                         pill
-                                        class="red font-weight-bold"
+                                        class="orange font-weight-bold"
                                         v-for="(role,
                                         index) in member.guildRoles"
                                         v-bind:key="
@@ -140,6 +144,8 @@
 </template>
 
 <script>
+const fs = require('fs');
+
 const classAvatars = {
     warrior: require('../assets/avatars/WoW-Classic-Warrior.png'),
     shaman: require('../assets/avatars/WoW-Classic-Shaman-Guide.png'),
@@ -153,385 +159,79 @@ const classAvatars = {
 export default {
     data() {
         return {
+            id: 1,
             membersDatabase: [
                 {
-                    nickname: 'Nicholas Evangelides',
+                    fullname: 'Nicholas Evangelide',
+                    nickname: 'ib0x',
+                    battletag: 'ib0x#2318',
                     class: 'Rogue',
-                    guildRoles: ['GM', 'RL', 'CL'],
-                    raidRole: 'Dps',
+                    guildRoles: ['GM', 'WD'],
+                    raidRole: 'DPS',
                     classAvatar: classAvatars.rogue
                 },
                 {
-                    nickname: 'Clickys',
+                    fullname: 'Andre Chris',
+                    nickname: 'javascript(clickys)',
+                    battletag: 'clickys#2974',
+                    class: 'Hunter',
+                    guildRoles: ['GM', 'WD'],
+                    raidRole: 'DPS',
+                    classAvatar: classAvatars.hunter
+                },
+                {
+                    fullname: 'Andreas Christodoulides',
+                    nickname: 'Electrichair',
+                    battletag: 'Andreas#8266	',
                     class: 'Druid',
-                    guildRoles: ['CR'],
-                    raidRole: 'Resto',
+                    guildRoles: ['M'],
+                    raidRole: 'Healer',
                     classAvatar: classAvatars.druid
                 },
                 {
-                    nickname: 'Pampos Charalampous',
-                    class: 'Warrior',
-                    guildRoles: ['RL', 'CL', 'O'],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.warrior
-                },
-                {
-                    nickname: 'Giorgos Freeman',
-                    class: 'Warrior',
-                    guildRoles: ['MT', 'TL'],
-                    raidRole: 'Tank',
-                    classAvatar: classAvatars.warrior
-                },
-                {
-                    nickname: 'Vasilis Louka',
-                    class: 'Warrior',
-                    guildRoles: ['BL', 'RO', 'O'],
-                    raidRole: 'Tank',
-                    classAvatar: classAvatars.warrior
-                },
-                {
-                    nickname: 'Stelios Michaelides',
-                    class: 'Warrior',
-                    guildRoles: [],
-                    raidRole: 'Tank',
-                    classAvatar: classAvatars.warrior
-                },
-                {
-                    nickname: 'Savvas Michael',
-                    class: 'Warrior',
-                    guildRoles: ['CL'],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.warrior
-                },
-                {
-                    nickname: 'Sotos Ioannou',
-                    class: 'Warrior',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.warrior
-                },
-                {
-                    nickname: 'Harrys Nikolaidis',
-                    class: 'Warrior',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.warrior
-                },
-                {
-                    nickname: 'Vangelis Gerolemou',
-                    class: 'Shaman',
-                    guildRoles: [],
-                    raidRole: 'Resto',
-                    classAvatar: classAvatars.shaman
-                },
-                {
-                    nickname: 'George Kleanthous',
-                    class: 'Shaman',
-                    guildRoles: [],
-                    raidRole: 'Resto',
-                    classAvatar: classAvatars.shaman
-                },
-                {
-                    nickname: 'Antonis Flagofas',
-                    class: 'Shaman',
-                    guildRoles: [],
-                    raidRole: 'Resto',
-                    classAvatar: classAvatars.shaman
-                },
-                {
-                    nickname: 'Mixalis Xrisostomou',
-                    class: 'Shaman',
-                    guildRoles: [],
-                    raidRole: 'Resto',
-                    classAvatar: classAvatars.shaman
-                },
-                {
-                    nickname: 'David Hondakias',
-                    class: 'Shaman',
-                    guildRoles: [],
-                    raidRole: 'Resto',
-                    classAvatar: classAvatars.shaman
-                },
-                {
-                    nickname: 'Sergios Panagiotou',
-                    class: 'Shaman',
-                    guildRoles: [],
-                    raidRole: 'Resto',
-                    classAvatar: classAvatars.shaman
-                },
-                {
-                    nickname: 'Sotiris Varnava',
-                    class: 'Shaman',
-                    guildRoles: [],
-                    raidRole: 'Encha',
-                    classAvatar: classAvatars.shaman
-                },
-                {
-                    nickname: 'Stavros Zachariou',
-                    class: 'Priest',
-                    guildRoles: ['CL'],
-                    raidRole: 'Healer',
-                    classAvatar: classAvatars.priest
-                },
-                {
-                    nickname: 'Geramanis Giorgos',
-                    class: 'Priest',
-                    guildRoles: [],
-                    raidRole: 'Healer',
-                    classAvatar: classAvatars.priest
-                },
-                {
-                    nickname: 'Giorgos Kamilalis',
-                    class: 'Priest',
-                    guildRoles: [],
-                    raidRole: 'Healer',
-                    classAvatar: classAvatars.priest
-                },
-                {
-                    nickname: 'Panos Geropoulos',
-                    class: 'Priest',
-                    guildRoles: [],
-                    raidRole: 'Healer',
-                    classAvatar: classAvatars.priest
-                },
-                {
-                    nickname: 'Larrys Mattis',
-                    class: 'Priest',
-                    guildRoles: [],
-                    raidRole: 'Healer',
-                    classAvatar: classAvatars.priest
-                },
-                {
-                    nickname: 'Christos Konnaris',
-                    class: 'Priest',
-                    guildRoles: [],
-                    raidRole: 'Healer',
-                    classAvatar: classAvatars.priest
-                },
-                {
-                    nickname: 'Sofoclis Sofocleous',
-                    class: 'Priest',
-                    guildRoles: [],
-                    raidRole: 'Healer',
-                    classAvatar: classAvatars.priest
-                },
-                {
-                    nickname: 'Nikolas Maloupas',
-                    class: 'Priest',
-                    guildRoles: [],
-                    raidRole: 'Healer',
-                    classAvatar: classAvatars.priest
-                },
-                {
-                    nickname: 'Marios Athanasiou',
-                    class: 'Priest',
-                    guildRoles: [],
-                    raidRole: 'Healer',
-                    classAvatar: classAvatars.priest
-                },
-                {
-                    nickname: 'Giannis Proxenou',
-                    class: 'Priest',
-                    guildRoles: [],
-                    raidRole: 'Shadow',
-                    classAvatar: classAvatars.priest
-                },
-
-                {
-                    nickname: 'Loukas Elia',
+                    fullname: 'George',
+                    nickname: 'WildFaith',
+                    battletag: '',
                     class: 'Druid',
-                    guildRoles: [],
-                    raidRole: 'Resto',
+                    guildRoles: ['T'],
+                    raidRole: 'Healer',
                     classAvatar: classAvatars.druid
                 },
                 {
-                    nickname: 'Andreas Christodoulides',
+                    fullname: 'Panos Araouzos',
+                    nickname: 'Rezilis',
+                    battletag: '',
                     class: 'Druid',
-                    guildRoles: [],
-                    raidRole: 'Resto',
+                    guildRoles: ['T'],
+                    raidRole: 'Healer',
                     classAvatar: classAvatars.druid
                 },
                 {
-                    nickname: 'Yiannis Emilianov',
-                    class: 'Mage',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.mage
-                },
-                {
-                    nickname: 'Stephanos Gavriel',
-                    class: 'Mage',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.mage
-                },
-                {
-                    nickname: 'Mixalis (Lifestalker)',
-                    class: 'Mage',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.mage
-                },
-                {
-                    nickname: 'Nikolas Nikolaides',
-                    class: 'Mage',
-                    guildRoles: ['RDR', 'O'],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.mage
-                },
-                {
-                    nickname: 'Ioakeim Frangoulis',
-                    class: 'Mage',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.mage
-                },
-                {
-                    nickname: 'Alexandros Ellinas',
-                    class: 'Mage',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.mage
-                },
-                {
-                    nickname: 'Xaris Hadjiyiannis',
-                    class: 'Mage',
-                    guildRoles: ['CL', 'RL'],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.mage
-                },
-                {
-                    nickname: 'Michael-angelos Tryfonos',
-                    class: 'Mage',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.mage
-                },
-                {
-                    nickname: 'Sotos Takis',
-                    class: 'Rogue',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.rogue
-                },
-                {
-                    nickname: 'Alexandros Theodorou',
-                    class: 'Rogue',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.rogue
-                },
-                {
-                    nickname: 'Christos Antoniou',
-                    class: 'Rogue',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.rogue
-                },
-                {
-                    nickname: 'Kleanthis Zaxariou',
-                    class: 'Rogue',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.rogue
-                },
-                {
-                    nickname: 'Pampos Ioannou',
-                    class: 'Rogue',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.rogue
-                },
-                {
-                    nickname: 'Alexadros Christophorou',
-                    class: 'Warlock',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.warlock
-                },
-                {
-                    nickname: 'Daniel Aravis',
-                    class: 'Warlock',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.warlock
-                },
-                {
-                    nickname: 'George Demetriou',
-                    class: 'Warlock',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.warlock
-                },
-                {
-                    nickname: 'Nikolas Lophitis',
-                    class: 'Warlock',
-                    guildRoles: ['CL'],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.warlock
-                },
-                {
-                    nickname: 'Vasilis Kokas',
+                    fullname: 'Alex Konstantinou',
+                    nickname: 'Tinder',
+                    battletag: 'Alex11#2648',
                     class: 'Hunter',
-                    guildRoles: ['RL', 'CL'],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.hunter
+                    guildRoles: ['M'],
+                    raidRole: 'DPS',
+                    classAvatar: classAvatars.druid
                 },
                 {
-                    nickname: 'Andreas Aravis',
+                    fullname: 'Michael Angelos Georgiou',
+                    nickname: 'Deadshotcy',
+                    battletag: 'Deathbringer#21947',
                     class: 'Hunter',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.hunter
+                    guildRoles: ['T'],
+                    raidRole: 'DPS',
+                    classAvatar: classAvatars.druid
                 },
                 {
-                    nickname: 'Stavros Agathokleous',
-                    class: 'Hunter',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.hunter
-                },
-                {
-                    nickname: 'Alex Konstantinou',
-                    class: 'Hunter',
-                    guildRoles: [],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.hunter
-                },
-                {
-                    nickname: 'Pampos Vasileiou',
-                    class: 'Warrior',
-                    guildRoles: ['C'],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.warrior
-                },
-                {
-                    nickname: 'Giannis Spanachides',
+                    fullname: 'Alex Christoforou',
+                    nickname: 'Shemaill',
+                    battletag: 'Babba#21410	',
                     class: 'Mage',
-                    guildRoles: ['C'],
-                    raidRole: 'Dps',
+                    guildRoles: ['M'],
+                    raidRole: 'DPS',
                     classAvatar: classAvatars.mage
-                },
-                {
-                    nickname: 'Andreas Glikis',
-                    class: 'Warlock',
-                    guildRoles: ['C'],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.warlock
-                },
-                {
-                    nickname: 'Marios Augousti',
-                    class: 'Priest',
-                    guildRoles: ['C'],
-                    raidRole: 'Healer',
-                    classAvatar: classAvatars.priest
-                },
-                {
-                    nickname: 'Antreas Hadjantonis ',
-                    class: 'Warrior',
-                    guildRoles: ['C'],
-                    raidRole: 'Dps',
-                    classAvatar: classAvatars.warrior
                 }
             ],
             filteredMembers: [],
@@ -571,6 +271,7 @@ export default {
         showAllMembers: function() {
             this.filteredMembers = [...this.membersDatabase];
         },
+
         show: function(wowClass) {
             if (wowClass === 'All') {
                 this.filteredMembers = [...this.membersDatabase];
@@ -579,6 +280,20 @@ export default {
             this.filteredMembers = this.membersDatabase.filter(member => {
                 return member.class === wowClass;
             });
+        },
+
+        createID: function() {
+            let id = this.id;
+            let numberOfIdDigits = id.toString().split('');
+            console.log(numberOfIdDigits);
+
+            for (let i = 0; i < this.membersDatabase.length; i++) {
+                if (numberOfIdDigits < 2) {
+                    this.membersDatabase[i].id = `#00${this.id++}`;
+                } else {
+                    this.membersDatabase[i].id = `#0${this.id++}`;
+                }
+            }
         }
     },
 
@@ -587,7 +302,9 @@ export default {
             return this.filteredMembers;
         }
     },
+
     mounted() {
+        this.createID();
         this.showAllMembers();
     }
 };
